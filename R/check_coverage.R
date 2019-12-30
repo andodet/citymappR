@@ -9,7 +9,7 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
-#' @importFrom httr GET content warn_for_status
+#' @importFrom httr GET content stop_for_status
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr mutate
 #' @importFrom tibble as_tibble
@@ -27,13 +27,11 @@ check_coverage <- function(point,
               query = list(key = api_token,
                            coord = point))
 
-  warn_for_status(resp)
+  stop_for_status(resp)
 
   return(
     fromJSON(
-      content(resp, "text"))[["points"]] %>%
-      mutate(coord = sapply(.data$coord, paste, collapse = ",")) %>%
-      as_tibble()
+      content(resp, "text"))[["points"]]$covered
   )
 
 }

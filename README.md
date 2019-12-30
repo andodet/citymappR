@@ -1,7 +1,6 @@
 # citymappR 🚎️
 <!-- badges: start -->
-
-[![CircleCI build status](https://circleci.com/gh/andodet/citymappR.svg?style=svg)](https://circleci.com/gh/andodet/citymappR)
+[![CircleCI](https://circleci.com/gh/andodet/citymappR/tree/master.svg?style=svg)](https://circleci.com/gh/andodet/citymappR/tree/master)
 <!-- badges: end -->
 
 A simple [Citymapper's API](https://citymapper.com/api) wrapper written in R
@@ -22,7 +21,7 @@ The package provides access to Citymapper's API endpoints:
 
 - `citymapper_setup`: initialise Citymapper's api token. Check `?citymapper_setup` for different ways of passing the api token.
 - `check_coverage`: check if a geographical point falls within Citymapper's covered area.
-- `get_travel_time`: comptes travel time between two points using public transport.
+- `get_travel_time`: comptues travel time between two points using public transport.
 
 Below you can find a minimal example of how both functions can be used.
 

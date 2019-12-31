@@ -16,7 +16,7 @@
 #'
 #' @author Andrea Dodet, \email{an.dodet@gmail.com}
 #'
-#' @importFrom httr GET warn_for_status content
+#' @importFrom httr GET stop_for_status content
 #' @importFrom jsonlite fromJSON
 #'
 #' @export
@@ -37,7 +37,7 @@ get_travel_time <- function(start_coord,
              )
   )
 
-  warn_for_status(resp)
+  stop_for_status(resp)
 
   return(
     fromJSON(

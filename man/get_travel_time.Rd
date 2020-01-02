@@ -31,8 +31,10 @@ Computes estimated travel time between two points using public transport.
 If \code{time} and \code{time_type} are not specified, time of travel will be assumed to be the same time at which the request is made.
 }
 \examples{
+\dontrun{
 get_travel_time(start_coord = "45.448643,9.207645",
                 end_coord = "45.452349,9.180225")
+}
 
 }
 \author{

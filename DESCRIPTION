@@ -17,3 +17,5 @@ Imports:
   jsonlite,
   tibble,
   rlang
+Suggests: 
+    testthat

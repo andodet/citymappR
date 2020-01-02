@@ -1,5 +1,5 @@
 
- citymappr_setup()
+citymappr_setup(api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
 
 ids <- c(123, 456)
 coords <- c("41.899009,12.477243",

@@ -11,8 +11,10 @@
 #' @return Estimated travel time in minutes (int).
 #'
 #' @examples
+#' \dontrun{
 #' get_travel_time(start_coord = "45.448643,9.207645",
 #'                 end_coord = "45.452349,9.180225")
+#' }
 #'
 #' @author Andrea Dodet, \email{an.dodet@gmail.com}
 #'

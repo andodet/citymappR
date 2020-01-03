@@ -1,6 +1,6 @@
 Package: citymappR
 Type: Package
-Title: Citymapper's API wrapper for R
+Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Andrea Dodet <an.dodet@gmail.com>
 Maintainer: Andrea dodet <an.dodet@gmail.com>

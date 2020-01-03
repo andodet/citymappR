@@ -1,9 +1,12 @@
-# citymappR 🚎️
+# citymappR 🚎
+
+![citymappR logo](citymappR_logo.png)
+️
 <!-- badges: start -->
 [![CircleCI](https://circleci.com/gh/andodet/citymappR/tree/master.svg?style=svg)](https://circleci.com/gh/andodet/citymappR/tree/master)
 <!-- badges: end -->
 
-A simple [Citymapper's API](https://citymapper.com/api) wrapper written in R
+A simple [Citymapper's API](https://citymapper.com/api) wrapper written in R.
 
 ## Installation
 

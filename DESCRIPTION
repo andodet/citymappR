@@ -19,3 +19,4 @@ Imports:
   rlang
 Suggests: 
     testthat
+BugReports: https://github.com/andodet/citymappR/issues

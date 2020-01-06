@@ -1,7 +1,7 @@
 # citymappR 🚎️
 
-![CitymappR logo](citymappR_logo.png
-)
+![](man/figures/citymappR_logo.png)
+
 <!-- badges: start -->
 [![CircleCI](https://circleci.com/gh/andodet/citymappR/tree/master.svg?style=svg)](https://circleci.com/gh/andodet/citymappR/tree/master)
 <!-- badges: end -->

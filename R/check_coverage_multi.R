@@ -7,6 +7,7 @@
 #' @param points Dataframe containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.
 #'   Columns should be set as \code{id (optional)} and \code{coord}.
 #' @return A tibble containing boolean responses for each point. IDs column passed in \code{points} will be mirrored back in response.
+#'   for quick reference.
 #'
 #' @examples
 #' \dontrun{
@@ -25,6 +26,12 @@
 #TODO: there are problems with json parsin (coords are not parsed as a list)
 check_coverage_multi <- function(points,
                                  api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
+
+  # Check if api token has been provided
+  if (api_token == "") {
+    stop("Citymapper API token not found, please provide one.
+         Check ?citymappr_setup on how to pass the api token")
+  }
 
   if (!is.data.frame(points)) {
     points <- as_tibble(points)

@@ -5,7 +5,7 @@
 #'
 #' @inheritParams citymappr_setup
 #' @param point Geographical coordinates of the point in WGS84 \code{'<latitude>,<longitude>'} format.
-#' @return A tibble containing boolean responses for each point.
+#' @return Boolean
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
@@ -22,6 +22,12 @@
 #' @export
 check_coverage <- function(point,
                            api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
+
+  # Check if api token has been provided
+  if (api_token == "") {
+    stop("Citymapper API token not found, please provide one.
+         Check ?citymappr_setup on how to pass the api token")
+  }
 
   resp <- GET(url="https://developer.citymapper.com/api/1/singlepointcoverage/",
               query = list(key = api_token,

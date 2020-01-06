@@ -28,6 +28,11 @@ get_travel_time <- function(start_coord,
                             time_type="",
                             api_token = Sys.getenv("CITYMAPPER_API_TOKEN")) {
 
+  # Check if api token has been provided
+  if (api_token == "") {
+    stop("Citymapper API token not found, please provide one.
+         Check ?citymappr_setup on how to pass the api token")
+  }
 
   resp <-GET(url = "https://developer.citymapper.com/api/1/traveltime/",
              query = list(

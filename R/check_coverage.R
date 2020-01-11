@@ -9,7 +9,7 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom rlang .data
-#' @importFrom httr GET content stop_for_status
+#' @importFrom httr RETRY GET content stop_for_status add_headers
 #' @importFrom jsonlite fromJSON
 #' @importFrom dplyr mutate
 #' @importFrom tibble as_tibble
@@ -29,9 +29,12 @@ check_coverage <- function(point,
          Check ?citymappr_setup on how to pass the api token")
   }
 
-  resp <- GET(url="https://developer.citymapper.com/api/1/singlepointcoverage/",
-              query = list(key = api_token,
-                           coord = point))
+  resp <- RETRY("GET",
+                url="https://developer.citymapper.com/api/1/singlepointcoverage/",
+                add_headers("https://github.com/andodet/citymappR/"),
+                query = list(key = api_token,
+                             coord = point)
+                )
 
   stop_for_status(resp)
 

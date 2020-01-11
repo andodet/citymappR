@@ -12,7 +12,7 @@ check_coverage(point, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
 \item{api_token}{Citymapper's api key (chr).}
 }
 \value{
-A tibble containing boolean responses for each point.
+Boolean
 }
 \description{
 Checks if a given point falls within Citymapper's covered areas.

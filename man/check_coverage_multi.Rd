@@ -14,6 +14,7 @@ Columns should be set as \code{id (optional)} and \code{coord}.}
 }
 \value{
 A tibble containing boolean responses for each point. IDs column passed in \code{points} will be mirrored back in response.
+  for quick reference.
 }
 \description{
 Checks if  multiple points fall within Citymapper's covered areas.

@@ -18,7 +18,7 @@
 #'
 #' @author Andrea Dodet, \email{an.dodet@gmail.com}
 #'
-#' @importFrom httr GET stop_for_status content
+#' @importFrom httr RETRY GET stop_for_status content add_headers
 #' @importFrom jsonlite fromJSON
 #'
 #' @export
@@ -34,15 +34,17 @@ get_travel_time <- function(start_coord,
          Check ?citymappr_setup on how to pass the api token")
   }
 
-  resp <-GET(url = "https://developer.citymapper.com/api/1/traveltime/",
-             query = list(
-               key = api_token,
-               startcoord = start_coord,
-               endcoord = end_coord,
-               time = time,
-               time_type = time_type
-             )
-  )
+  resp <-RETRY("GET",
+               url = "https://developer.citymapper.com/api/1/traveltime/",
+               add_headers("https://github.com/andodet/citymappR/"),
+               query = list(
+                 key = api_token,
+                 startcoord = start_coord,
+                 endcoord = end_coord,
+                 time = time,
+                 time_type = time_type
+                 )
+               )
 
   stop_for_status(resp)
 

@@ -19,7 +19,7 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom jsonlite fromJSON toJSON
-#' @importFrom httr POST content stop_for_status
+#' @importFrom httr RETRY POST content stop_for_status add_headers
 #' @importFrom tibble as_tibble
 #'
 #' @export
@@ -50,10 +50,13 @@ check_coverage_multi <- function(points,
 
   cured_input <- toJSON(list(`points` = points))
 
-  resp <- POST(paste0("https://developer.citymapper.com/api/1/coverage/?key=",
-                      api_token),
-               body = cured_input,
-               encode="json")
+  resp <- RETRY("POST",
+                url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
+                             api_token),
+                add_headers("https://github.com/andodet/citymappR/"),
+                body = cured_input,
+                encode="json"
+                )
 
   stop_for_status(resp)
 

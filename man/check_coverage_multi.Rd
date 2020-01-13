@@ -4,7 +4,11 @@
 \alias{check_coverage_multi}
 \title{Checks if multiple points are in covered area}
 \usage{
-check_coverage_multi(points, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
+check_coverage_multi(
+  points,
+  ids = NA,
+  api_token = Sys.getenv("CITYMAPPER_API_TOKEN")
+)
 }
 \arguments{
 \item{points}{Dataframe containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.

@@ -1,27 +1,31 @@
-#' Check if a point is in covered area
+#' Checks if multiple points are in covered area
 #'
-#' Checks if a given point falls within Citymapper's covered areas.
-#' It is good practice to refresh this value regularly as covered areas might change.
+#' Checks if  multiple points fall within Citymapper's covered areas.
+#' It is good practice to refresh this values regularly as covered areas might change.
 #'
 #' @inheritParams citymappr_setup
-#' @param point Geographical coordinates of the point in WGS84 \code{'<latitude>,<longitude>'} format.
-#' @return Boolean
-#'
-#' @importFrom magrittr %>%
-#' @importFrom rlang .data
-#' @importFrom httr RETRY GET content stop_for_status add_headers
-#' @importFrom jsonlite fromJSON
-#' @importFrom dplyr mutate
-#' @importFrom tibble as_tibble
+#' @param points Dataframe containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.
+#'   Columns should be set as \code{id (optional)} and \code{coord}.
+#' @return A tibble containing boolean responses for each point. IDs column passed in \code{points} will be mirrored back in response.
+#'   for quick reference.
 #'
 #' @examples
 #' \dontrun{
-#' check_coverage("45.448643,9.207645")
+#' # Make dataframes with coordinates and (optional) ids
+#'
 #' }
 #'
+#' @seealso \code{\link{check_coverage}}
+#'
+#' @importFrom magrittr %>%
+#' @importFrom jsonlite fromJSON toJSON
+#' @importFrom httr RETRY POST content stop_for_status add_headers
+#' @importFrom tibble as_tibble
+#'
 #' @export
-check_coverage <- function(point,
-                           api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
+#TODO: update tests accordingly
+check_coverage_multi <- function(points, ids=NA,
+                                 api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
 
   # Check if api token has been provided
   if (api_token == "") {
@@ -29,18 +33,48 @@ check_coverage <- function(point,
          Check ?citymappr_setup on how to pass the api token")
   }
 
-  resp <- RETRY("GET",
-                url="https://developer.citymapper.com/api/1/singlepointcoverage/",
-                add_headers("https://github.com/andodet/citymappR/"),
-                query = list(key = api_token,
-                             coord = point)
-                )
+  if (length(points) > 1) {
 
-  stop_for_status(resp)
+    points_payload <- data.frame(coord = points, ids = ids)
 
-  return(
-    fromJSON(
-      content(resp, "text"))[["points"]]$covered
-  )
+    points_payload$coord <- lapply(
+      strsplit(as.character(points), ","),
+      as.numeric
+    )
+
+    points_payload <- toJSON(list(`points` = points_payload))
+
+    resp <- RETRY("POST", url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
+                                       api_token),
+                  add_headers("https://github.com/andodet/citymappR/"),
+                  body = points_payload,
+                  encode="json"
+                  )
+
+    stop_for_status(resp)
+
+    return(
+      fromJSON(
+        content(resp, "text"))[["points"]]["covered"]
+      )
+
+  } else {
+
+    resp <- RETRY("GET",
+                  url="https://developer.citymapper.com/api/1/singlepointcoverage/",
+                  add_headers("https://github.com/andodet/citymappR/"),
+                  query = list(key = api_token,
+                               coord = points)
+            )
+
+    stop_for_status(resp)
+
+    return(
+      fromJSON(
+        content(resp, "text"))[["points"]]$covered
+    )
+
+  }
 
 }
+

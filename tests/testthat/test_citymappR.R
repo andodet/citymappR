@@ -5,10 +5,20 @@ ids <- c(123, 456)
 coords <- c("41.899009,12.477243",
             "41.889083,12.470514")
 
-test_that("Junk input throws an error", {
+test_that("Missing API key throws an error", {
 
+  expect_error(check_coverage(points = coords[1],
+                              api_token = ""))
+
+  expect_error(get_travel_time(start_coord = coords[1],
+                               end_coord = coords[2],
+                               api_token = ""))
+})
+
+test_that("Junk input throws an error", {
+2
   expect_error(
-    check_coverage("wrong_input"),
+    check_coverage("junk input"),
     class = "http_error"
   )
 
@@ -20,7 +30,6 @@ test_that("Junk input throws an error", {
 
 })
 
-
 test_that("Coverage check returns a boolean", {
 
   expect_equal(
@@ -29,19 +38,16 @@ test_that("Coverage check returns a boolean", {
 
 })
 
+test_that("check_coverage returns boolean with single input", {
+  expect_true(check_coverage(coords[1]))
+})
 
-test_that("Check coverage (multi) returns a dataframe", {
+test_that("check_coverage returns df with multiple input" , {
+  expect_s3_class(check_coverage(coords), "data.frame")
 
-  df <- data.frame(coord = c("41.899009,12.477243",
-                             "41.8891, 12.4705"))
-
-  expect_s3_class(check_coverage_multi(df), "data.frame")
-  expect_equal(colnames(check_coverage_multi(df)), c("covered", "coord"))
-
-
-  df_id <- data.frame(id = ids, coord = coords)
-
-  expect_s3_class(check_coverage_multi(df_id), "data.frame")
-  expect_equal(colnames(check_coverage_multi(df_id)), c("covered", "id", "coord"))
+  # Test for list inputs
+  expect_s3_class(check_coverage(
+    as.list(coords)), "data.frame"
+    )
 
 })

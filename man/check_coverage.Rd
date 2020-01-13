@@ -2,25 +2,32 @@
 % Please edit documentation in R/check_coverage.R
 \name{check_coverage}
 \alias{check_coverage}
-\title{Check if a point is in covered area}
+\title{Checks if one or multiple points are in covered area}
 \usage{
-check_coverage(point, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
+check_coverage(points, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
 }
 \arguments{
-\item{point}{Geographical coordinates of the point in WGS84 \code{'<latitude>,<longitude>'} format.}
+\item{points}{List or vector containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.}
 
 \item{api_token}{Citymapper's api key (chr).}
 }
 \value{
+<<<<<<< HEAD
 Boolean
+=======
+A vector containing boolean responses for each point in \code{points}
+>>>>>>> check_cov_refactor
 }
 \description{
-Checks if a given point falls within Citymapper's covered areas.
-It is good practice to refresh this value regularly as covered areas might change.
+Checks if multiple points fall within Citymapper's covered areas. It accepts multiple
+  Multiple inputs can be passed in a vector or list format.
+It is good practice to refresh this values regularly as covered areas might change over time.
 }
 \examples{
 \dontrun{
-check_coverage("45.448643,9.207645")
+point <- "41.889083,12.470514"
+
+check_coverage(point)
 }
 
 }

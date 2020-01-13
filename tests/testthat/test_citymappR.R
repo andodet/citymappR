@@ -43,11 +43,9 @@ test_that("check_coverage returns boolean with single input", {
 })
 
 test_that("check_coverage returns df with multiple input" , {
-  expect_s3_class(check_coverage(coords), "data.frame")
+  expect_true(all(check_coverage(coords)))
 
   # Test for list inputs
-  expect_s3_class(check_coverage(
-    as.list(coords)), "data.frame"
-    )
+  expect_true(all(check_coverage(as.list(coords))))
 
 })

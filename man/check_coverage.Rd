@@ -12,11 +12,7 @@ check_coverage(points, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
 \item{api_token}{Citymapper's api key (chr).}
 }
 \value{
-<<<<<<< HEAD
-Boolean
-=======
 A vector containing boolean responses for each point in \code{points}
->>>>>>> check_cov_refactor
 }
 \description{
 Checks if multiple points fall within Citymapper's covered areas. It accepts multiple

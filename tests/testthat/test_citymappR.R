@@ -42,7 +42,7 @@ test_that("check_coverage returns boolean with single input", {
   expect_true(check_coverage(coords[1]))
 })
 
-test_that("check_coverage returns df with multiple input" , {
+test_that("check_coverage returns vector containing booleans" , {
   expect_true(all(check_coverage(coords)))
 
   # Test for list inputs

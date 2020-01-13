@@ -16,7 +16,7 @@ A vector containing boolean responses for each point in \code{points}
 }
 \description{
 Checks if multiple points fall within Citymapper's covered areas. It accepts multiple
-  it accepts multiple points thgough a list or vector.
+  Multiple inputs can be passed in a vector or list format.
 It is good practice to refresh this values regularly as covered areas might change over time.
 }
 \examples{

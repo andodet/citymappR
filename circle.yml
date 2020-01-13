@@ -6,10 +6,10 @@ jobs:
     environment:
       R_LIBS: ~/R/Library
     steps:
-      - restore_cache:
-          keys:
-            - r-pkg-cache--
-            - r-pkg-cache--
+#      - restore_cache:
+#          keys:
+#            - r-pkg-cache--
+#            - r-pkg-cache--
       - checkout
       - run:
           name: Install package dependencies
@@ -31,7 +31,7 @@ jobs:
           command: R CMD check --as-cran --no-manual *tar.gz
       - store_artifacts:
           path: citymappR.Rcheck/
-      - save_cache:
-          key: r-pkg-cache--
+#      - save_cache:
+#          key: r-pkg-cache--
           paths:
             - "~/R/Library"

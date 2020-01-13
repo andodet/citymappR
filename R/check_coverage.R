@@ -1,31 +1,28 @@
-#' Checks if multiple points are in covered area
+#' Checks if one or multiple points are in covered area
 #'
-#' Checks if  multiple points fall within Citymapper's covered areas.
-#' It is good practice to refresh this values regularly as covered areas might change.
+#' Checks if multiple points fall within Citymapper's covered areas. It accepts multiple
+#'   Multiple inputs can be passed in a vector or list format.
+#' It is good practice to refresh this values regularly as covered areas might change over time.
 #'
 #' @inheritParams citymappr_setup
-#' @param points Dataframe containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.
-#'   Columns should be set as \code{id (optional)} and \code{coord}.
-#' @return A tibble containing boolean responses for each point. IDs column passed in \code{points} will be mirrored back in response.
-#'   for quick reference.
+#' @param points List or vector containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.
+#' @return A vector containing boolean responses for each point in \code{points}
 #'
 #' @examples
 #' \dontrun{
-#' # Make dataframes with coordinates and (optional) ids
+#' point <- "41.889083,12.470514"
 #'
+#' check_coverage(point)
+#  [1] TRUE
 #' }
-#'
-#' @seealso \code{\link{check_coverage}}
 #'
 #' @importFrom magrittr %>%
 #' @importFrom jsonlite fromJSON toJSON
 #' @importFrom httr RETRY POST content stop_for_status add_headers
-#' @importFrom tibble as_tibble
 #'
 #' @export
-#TODO: update tests accordingly
-check_coverage_multi <- function(points, ids=NA,
-                                 api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
+check_coverage <- function(points,
+                           api_token=Sys.getenv("CITYMAPPER_API_TOKEN")) {
 
   # Check if api token has been provided
   if (api_token == "") {
@@ -35,7 +32,12 @@ check_coverage_multi <- function(points, ids=NA,
 
   if (length(points) > 1) {
 
-    points_payload <- data.frame(coord = points, ids = ids)
+    # Handle lists
+    if(is.list(points)) {
+      points <- unlist(points)
+    }
+
+    points_payload <- data.frame(coord = points)
 
     points_payload$coord <- lapply(
       strsplit(as.character(points), ","),
@@ -55,7 +57,8 @@ check_coverage_multi <- function(points, ids=NA,
 
     return(
       fromJSON(
-        content(resp, "text"))[["points"]]["covered"]
+        content(resp, "text"))[["points"]]["covered"] %>%
+        .$covered  # Return vector
       )
 
   } else {

@@ -15,7 +15,7 @@ check_coverage(points, api_token = Sys.getenv("CITYMAPPER_API_TOKEN"))
 A vector containing boolean responses for each point in \code{points}
 }
 \description{
-Checks if multiple points fall within Citymapper's covered areas. It accepts multiple
+Checks if multiple points fall within Citymapper's covered areas.
   Multiple inputs can be passed in a vector or list format.
 It is good practice to refresh this values regularly as covered areas might change over time.
 }

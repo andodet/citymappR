@@ -16,7 +16,7 @@ test_that("Missing API key throws an error", {
 })
 
 test_that("Junk input throws an error", {
-2
+
   expect_error(
     check_coverage("junk input"),
     class = "http_error"

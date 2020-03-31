@@ -28,7 +28,7 @@
 #'
 #' @export
 citymappr_setup <- function(config_file = "~/.citymappr",
-                            api_token = "",
+                            api_token = NULL,
                             echo = FALSE) {
 
   if (file.exists(config_file)) {
@@ -38,11 +38,13 @@ citymappr_setup <- function(config_file = "~/.citymappr",
 
     Sys.setenv(CITYMAPPER_API_TOKEN = config[,"api_token"])
 
-  } else {
-
+  } else if(!is.null(api_token)) {
     Sys.setenv(CITYMAPPER_API_TOKEN = api_token)
+  } else {
+    stop("No config file or token provided. Please provide one. Use `?citymappr_setup` for help")
   }
 
+  # Print token if verbose
   if (echo) {
     print(toJSON(as.list(Sys.getenv(c("CITYMAPPER_API_TOKEN")))))
   }

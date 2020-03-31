@@ -4,7 +4,7 @@
 \alias{citymappr_setup}
 \title{Setup env variables for Citymapper's API access}
 \usage{
-citymappr_setup(config_file = "~/.citymappr", api_token = "", echo = FALSE)
+citymappr_setup(config_file = "~/.citymappr", api_token = NULL, echo = FALSE)
 }
 \arguments{
 \item{config_file}{a configuration file in DCF format. See \link{read.dcf}.}

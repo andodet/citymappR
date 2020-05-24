@@ -3,7 +3,7 @@
 ![](man/figures/citymappR_logo.png)
 
 <!-- badges: start -->
-[![CircleCI](https://circleci.com/gh/andodet/citymappR/tree/master.svg?style=svg)](https://circleci.com/gh/andodet/citymappR/tree/master)
+[![R build status](https://github.com/andodet/citymappR/workflows/R-CMD-check/badge.svg)](https://github.com/andodet/citymappR/actions)
 <!-- badges: end -->
 
 

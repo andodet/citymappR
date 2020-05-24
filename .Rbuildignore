@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^\.circleci/config\.yml$
 ^circle.yml
+^\.github$

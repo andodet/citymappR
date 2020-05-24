@@ -13,10 +13,7 @@ RoxygenNote: 7.1.0
 Imports:
   magrittr,
   httr,
-  dplyr,
   jsonlite,
-  tibble,
-  rlang
 Suggests: 
     testthat
 BugReports: https://github.com/andodet/citymappR/issues

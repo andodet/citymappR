@@ -21,6 +21,6 @@ jobs:
         shell: Rscript {0}
       - name: Check
         env:
-          CITYMAPPER_API_TOKEN: ${{ secrets.ctymapper_api_key }}
+          CITYMAPPER_API_TOKEN: ${{ secrets.citymapper_api_key }}
         run: devtools::check(args = "--no-manual", error_on = "error")
         shell: Rscript {0}

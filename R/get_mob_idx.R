@@ -23,7 +23,7 @@
 #'     \item \code{city_name}: Name of oberved city
 #'   }
 #'
-#' @importFrom httr RETRY GET add_headers
+#' @importFrom httr RETRY GET add_headers progress
 #' @importFrom dplyr mutate filter select left_join
 #' @importFrom rlang .data
 #'
@@ -37,7 +37,8 @@ get_mob_idx <- function(start_date = "2020-01-01",
   res <- httr::RETRY(
     "GET",
     url = 'https://citymapper.com/api/gobot_tab/data',
-    add_headers("https://github.com/andodet/citymappR/")
+    add_headers("https://github.com/andodet/citymappR/"),
+    httr::progress(type = "down", con = stdout())
     ) %>%
     content()
 
@@ -68,18 +69,6 @@ get_mob_idx <- function(start_date = "2020-01-01",
     res_df <- res_df %>%
       filter(.data$type == 'one_day')
   }
-
-  # Filter by city and weekly if provided
-  # if (!is.na(city)) {
-  #   res_df <- res_df %>%
-  #     filter(tolower(.data$city_name) %in% city)
-  # } else if (weekly) {
-  #   res_df <- res_df %>%
-  #     filter(.data$type == 'seven_day')
-  # } else {
-  #   res_df <- res_df %>%
-  #     filter(.data$type == 'one_day')
-  # }
 
   return(res_df)
 }

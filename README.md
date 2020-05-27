@@ -26,8 +26,9 @@ The package provides access to Citymapper's API endpoints:
 - `citymapper_setup`: initialise Citymapper's api token. Check `?citymapper_setup` for different ways of passing the api token.
 - `check_coverage`: check if aone or moregeographical point sfallswithin Citymapper's covered areas.
 - `cet_travel_time`: comptues travel time between two points using public transport.
+- `get_mob_idx`: Download [city mobility index](https://citymapper.com/cmi/) data as dataframe.
 
-Below you can find a minimal example of how both functions can be used.
+Below few simple examples on how tho use these functions:
 
 ```r
 library(citymappR)
@@ -54,6 +55,20 @@ travel_time <- get_travel_time(start_coord = start_point,
 
 travel_time  # [1] 21
 ```
+```r
+library(ggplot2)
+
+cities <- c("rome", "milan", "london")
+
+# Get a sense of how poeple is starting to move again
+df <- get_mob_idx(city = cities, start_date = "2020-05-01")
+
+df %>% 
+  ggplot(aes(date, value, colour = city_name)) +
+  geom_line()
+```
+![](man/figures/mob_idx.png)
+
 
 ## Quotas
 

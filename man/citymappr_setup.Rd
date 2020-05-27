@@ -25,3 +25,16 @@ If a file is found at the locatioin specified in \code{config_file}, the values 
 api_token: YOUR_TOKEN_STRING
 }
 }
+\examples{
+\dontrun{
+# Reads from default file (i.e ~/.citymappr)
+citymmappr_setup()
+
+# Reads from alternate config file
+citymappr_setup("~/path/to/config")
+
+# The manual way
+citymappr_setup(api_token = "your_api_string")
+}
+
+}

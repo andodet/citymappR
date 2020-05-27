@@ -1,11 +1,10 @@
 Package: citymappR
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Interact with Citymapper API
+Version: 0.1.1
 Author: Andrea Dodet <an.dodet@gmail.com>
 Maintainer: Andrea dodet <an.dodet@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Simple wrapper for Citymapper's API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -14,6 +13,9 @@ Imports:
   magrittr,
   httr,
   jsonlite,
+  dplyr,
+  data.table, 
+  rlang
 Suggests: 
-    testthat
+    testthat,
 BugReports: https://github.com/andodet/citymappR/issues

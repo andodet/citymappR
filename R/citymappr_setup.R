@@ -18,7 +18,7 @@
 #' citymmappr_setup()
 #'
 #' # Reads from alternate config file
-#' citymappr_setup("~/path/to/config)
+#' citymappr_setup("~/path/to/config")
 #'
 #' # The manual way
 #' citymappr_setup(api_token = "your_api_string")

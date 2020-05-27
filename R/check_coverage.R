@@ -1,11 +1,12 @@
 #' Checks if one or multiple points are in covered area
 #'
 #' Checks if multiple points fall within Citymapper's covered areas.
-#'   Multiple inputs can be passed in a vector or list format.
-#'It is good practice to refresh this values regularly as covered areas might change over time.
+#'  Multiple inputs can be passed in a vector or list format.
+#'  It is good practice to refresh this values regularly as covered areas might change over time.
 #'
 #' @inheritParams citymappr_setup
-#' @param points List or vector containing geographical coordinates of the start point in WGS84 \code{'<latitude>,<longitude>'} format.
+#' @param points List or vector containing geographical coordinates of the start point
+#'   in WGS84 \code{'<latitude>,<longitude>'} format.
 #' @return A vector containing boolean responses for each point in \code{points}
 #'
 #' @examples

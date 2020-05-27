@@ -17,9 +17,11 @@ get_travel_time(
 
 \item{end_coord}{Geographical coordinates of the arrival point in WGS84 '<latitude>,<longitude>' format.}
 
-\item{time}{A date & time in ISO-8601 format (e.g \code{2014-11-06T19:00:02-0500}). If omitted travel time will be computed for travel at the time of the request.}
+\item{time}{A date & time in ISO-8601 format (e.g \code{2014-11-06T19:00:02-0500}).
+If omitted travel time will be computed for travel at the time of the request.}
 
-\item{time_type}{Required if `time` is provided. At the moment the only defined type is `arrival`, it computes the travel time for arriving at `end_coord` at the given time.}
+\item{time_type}{Required if `time` is provided. At the moment the only defined type
+is `arrival`, it computes the travel time for arriving at `end_coord` at the given time.}
 
 \item{api_token}{Citymapper's api key (chr).}
 }
@@ -28,7 +30,8 @@ Estimated travel time in minutes (int).
 }
 \description{
 Computes estimated travel time between two points using public transport.
-If \code{time} and \code{time_type} are not specified, time of travel will be assumed to be the same time at which the request is made.
+If \code{time} and \code{time_type} are not specified, time of travel will be assumed
+    to be the same time at which the request is made.
 }
 \examples{
 \dontrun{

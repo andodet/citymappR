@@ -1,0 +1,25 @@
+simdestination: docs/
+url:
+
+authors:
+  Andrea Dodet:
+    href: https://github.com/andodet
+
+navbar:
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: Reference
+      href: reference/index.html
+
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/andodet/citymappR
+
+reference:
+  - title: "Functions"
+    contents:
+      - check_coverage
+      - citymappr_setup
+      - get_mob_idx
+      - get_travel_time

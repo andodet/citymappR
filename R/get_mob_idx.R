@@ -31,14 +31,22 @@
 get_mob_idx <- function(start_date = "2020-01-01",
                         end_date = Sys.Date(),
                         city = NA,
-                        weekly = FALSE) {
+                        weekly = FALSE,
+                        verbose = FALSE) {
+
+  # Add progress bar if verbose
+  if (verbose) {
+    prog_bar <- httr::progress(type = "down", con = stdout())
+  } else {
+    prog_bar <- NULL
+  }
 
   # Get data from Citymapper's API
   res <- httr::RETRY(
     "GET",
     url = 'https://citymapper.com/api/gobot_tab/data',
     add_headers("https://github.com/andodet/citymappR/"),
-    httr::progress(type = "down", con = stdout())
+    prog_bar
     ) %>%
     content()
 

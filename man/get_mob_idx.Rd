@@ -8,7 +8,8 @@ get_mob_idx(
   start_date = "2020-01-01",
   end_date = Sys.Date(),
   city = NA,
-  weekly = FALSE
+  weekly = FALSE,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ get_mob_idx(
 This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.}
 
 \item{weekly}{Get weekly data (default is daily)}
+
+\item{verbose}{Show download progress bar}
 }
 \value{
 A data frame containing the following columns:

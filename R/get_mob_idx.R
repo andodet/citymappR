@@ -11,6 +11,7 @@
 #' @param city (optional) A vector containing specific cities to filter for (e.g "milan").
 #'   This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.
 #' @param weekly Get weekly data (default is daily)
+#' @param verbose Show download progress bar
 #'
 #' @return A data frame containing the following columns:
 #'   \itemize{

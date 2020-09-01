@@ -77,10 +77,12 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the package running the following command:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"andodet/citymappR"</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"andodet/citymappR"</span>)
 
 <span class="co"># Or using devtools</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"andodet/citymappR"</span>)</pre></div>
+<span class="kw">devtools</span>::<span class="fu">install_github</span>(<span class="st">"andodet/citymappR"</span>)
+</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -97,37 +99,43 @@
 <code>get_mob_idx</code>: Download <a href="https://citymapper.com/cmi/">city mobility index</a> data as dataframe.</li>
 </ul>
 <p>Below few simple examples on how tho use these functions:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">citymappR</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">citymappR</span>)
 
 <span class="co"># Set Citymapper's api key</span>
 <span class="fu"><a href="reference/citymappr_setup.html">citymappr_setup</a></span>()
 
-<span class="no">start_point</span> <span class="kw">&lt;-</span> <span class="st">"41.889083,12.470514"</span>
-<span class="no">end_point</span> <span class="kw">&lt;-</span> <span class="st">"41.899009,12.477243"</span>
+<span class="kw">start_point</span> <span class="op">&lt;-</span> <span class="st">"41.889083,12.470514"</span>
+<span class="kw">end_point</span> <span class="op">&lt;-</span> <span class="st">"41.899009,12.477243"</span>
 
 <span class="co"># Check coverage for a single point</span>
-<span class="fu"><a href="reference/check_coverage.html">check_coverage</a></span>(<span class="no">start_point</span>)
+<span class="fu"><a href="reference/check_coverage.html">check_coverage</a></span>(<span class="kw">start_point</span>)
 <span class="co"># [1] TRUE</span>
 
 <span class="co"># Accepts vectors or lists with multiple points</span>
-<span class="no">points_vec</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">start_point</span>, <span class="no">end_point</span>))
-<span class="fu"><a href="reference/check_coverage.html">check_coverage</a></span>(<span class="no">points_vec</span>)
-<span class="co"># [1] TRUE TRUE</span></pre></div>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># Get travel time between two points (minutes)</span>
-<span class="no">travel_time</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_travel_time.html">get_travel_time</a></span>(<span class="kw">start_coord</span> <span class="kw">=</span> <span class="no">start_point</span>,
-                               <span class="kw">end_coord</span> <span class="kw">=</span> <span class="no">end_point</span>)
+<span class="kw">points_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">start_point</span>, <span class="kw">end_point</span>))
+<span class="fu"><a href="reference/check_coverage.html">check_coverage</a></span>(<span class="kw">points_vec</span>)
+<span class="co"># [1] TRUE TRUE</span>
+</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="co"># Get travel time between two points (minutes)</span>
+<span class="kw">travel_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_travel_time.html">get_travel_time</a></span>(start_coord = <span class="kw">start_point</span>,
+                               end_coord = <span class="kw">end_point</span>)
 
-<span class="no">travel_time</span>  <span class="co"># [1] 21</span></pre></div>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="kw">travel_time</span>  <span class="co"># [1] 21</span>
+</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">ggplot2</span>)
 
-<span class="no">cities</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"rome"</span>, <span class="st">"milan"</span>, <span class="st">"london"</span>)
+<span class="kw">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"rome"</span>, <span class="st">"milan"</span>, <span class="st">"london"</span>)
 
 <span class="co"># Get a sense of how poeple is starting to move again</span>
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_mob_idx.html">get_mob_idx</a></span>(<span class="kw">city</span> <span class="kw">=</span> <span class="no">cities</span>, <span class="kw">start_date</span> <span class="kw">=</span> <span class="st">"2020-05-01"</span>)
+<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_mob_idx.html">get_mob_idx</a></span>(city = <span class="kw">cities</span>, start_date = <span class="st">"2020-05-01"</span>)
 
-<span class="no">df</span> <span class="kw">%&gt;%</span>
-  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">date</span>, <span class="no">value</span>, <span class="kw">colour</span> <span class="kw">=</span> <span class="no">city_name</span>)) +
-  <span class="fu">geom_line</span>()</pre></div>
+<span class="kw">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="kw">date</span>, <span class="kw">value</span>, colour = <span class="kw">city_name</span>)) <span class="op">+</span>
+  <span class="fu">geom_line</span>()
+</pre></div>
 <p><img src="reference/figures/mob_idx.png"></p>
 </div>
 <div id="quotas" class="section level2">

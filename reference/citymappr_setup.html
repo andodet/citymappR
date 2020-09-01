@@ -119,7 +119,7 @@ If a file is found at the locatioin specified in config_file, the values will be
 If a file is found at the locatioin specified in <code>config_file</code>, the values will be used.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>citymappr_setup</span>(<span class='kw'>config_file</span> <span class='kw'>=</span> <span class='st'>"~/.citymappr"</span>, <span class='kw'>api_token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>citymappr_setup</span>(config_file = <span class='st'>"~/.citymappr"</span>, api_token = <span class='kw'>NULL</span>, echo = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,11 +145,12 @@ If a file is found at the locatioin specified in <code>config_file</code>, the v
 
     
 <pre>
-<span class='no'>api_token</span>: <span class='no'>YOUR_TOKEN_STRING</span></pre>
+<span class='kw'>api_token</span><span class='op'>:</span> <span class='kw'>YOUR_TOKEN_STRING</span>
+</pre>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># Reads from default file (i.e ~/.citymappr)</span>
 <span class='fu'>citymmappr_setup</span>()
 
@@ -157,8 +158,10 @@ If a file is found at the locatioin specified in <code>config_file</code>, the v
 <span class='fu'>citymappr_setup</span>(<span class='st'>"~/path/to/config"</span>)
 
 <span class='co'># The manual way</span>
-<span class='fu'>citymappr_setup</span>(<span class='kw'>api_token</span> <span class='kw'>=</span> <span class='st'>"your_api_string"</span>)
-}</div></pre>
+<span class='fu'>citymappr_setup</span>(api_token = <span class='st'>"your_api_string"</span>)
+}
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

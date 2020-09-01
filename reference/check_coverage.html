@@ -121,7 +121,7 @@
  It is good practice to refresh this values regularly as covered areas might change over time.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_coverage</span>(<span class='no'>points</span>, <span class='kw'>api_token</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"CITYMAPPER_API_TOKEN"</span>))</pre>
+    <pre class="usage"><span class='fu'>check_coverage</span>(<span class='kw'>points</span>, api_token = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"CITYMAPPER_API_TOKEN"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,11 +142,13 @@ in WGS84 <code>'&lt;latitude&gt;,&lt;longitude&gt;'</code> format.</p></td>
     <p>A vector containing boolean responses for each point in <code>points</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>point</span> <span class='kw'>&lt;-</span> <span class='st'>"41.889083,12.470514"</span>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>point</span> <span class='op'>&lt;-</span> <span class='st'>"41.889083,12.470514"</span>
 
-<span class='fu'>check_coverage</span>(<span class='no'>point</span>)
-}</div></pre>
+<span class='fu'>check_coverage</span>(<span class='kw'>point</span>)
+}
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

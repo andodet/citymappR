@@ -124,11 +124,12 @@ calculated comparing the number of trips planned on the app to a typical usage
     </div>
 
     <pre class="usage"><span class='fu'>get_mob_idx</span>(
-  <span class='kw'>start_date</span> <span class='kw'>=</span> <span class='st'>"2020-01-01"</span>,
-  <span class='kw'>end_date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>weekly</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  start_date = <span class='st'>"2020-01-01"</span>,
+  end_date = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
+  city = <span class='fl'>NA</span>,
+  cache = <span class='fl'>TRUE</span>,
+  weekly = <span class='fl'>FALSE</span>,
+  verbose = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -146,6 +147,10 @@ calculated comparing the number of trips planned on the app to a typical usage
       <th>city</th>
       <td><p>(optional) A vector containing specific cities to filter for (e.g "milan").
 This obviously follow Citymapper's <a href='https://citymapper.com/cities?lang=en'>coverage</a>.</p></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>(bool) cache results to filesystem</p></td>
     </tr>
     <tr>
       <th>weekly</th>

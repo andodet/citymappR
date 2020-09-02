@@ -10,6 +10,7 @@
 #' @param end_date Last observed day with format YYYY-MM-DD
 #' @param city (optional) A vector containing specific cities to filter for (e.g "milan").
 #'   This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.
+#' @param cache (bool) cache results to filesystem
 #' @param weekly Get weekly data (default is daily)
 #' @param verbose Show download progress bar
 #'
@@ -32,6 +33,7 @@
 get_mob_idx <- function(start_date = "2020-01-01",
                         end_date = Sys.Date(),
                         city = NA,
+                        cache = TRUE,
                         weekly = FALSE,
                         verbose = FALSE) {
 
@@ -42,14 +44,23 @@ get_mob_idx <- function(start_date = "2020-01-01",
     prog_bar <- NULL
   }
 
-  # Get data from Citymapper's API
-  res <- httr::RETRY(
-    "GET",
-    url = 'https://citymapper.com/api/gobot_tab/data',
-    add_headers("https://github.com/andodet/citymappR/"),
-    prog_bar
+  download_data <- function() {
+    httr::RETRY(
+      "GET",
+      url = 'https://citymapper.com/api/gobot_tab/data',
+      add_headers("https://github.com/andodet/citymappR/"),
+      prog_bar
     ) %>%
-    content()
+      content()
+  }
+
+  # Cache results if not otherwise specified
+  if (cache) {
+    data <- cache_call(FUN = download_data)
+    res <- data()
+  } else {
+    res <- download_data()
+  }
 
   # Parse locations
   locations <- res$regions %>%

@@ -8,6 +8,7 @@ get_mob_idx(
   start_date = "2020-01-01",
   end_date = Sys.Date(),
   city = NA,
+  cache = TRUE,
   weekly = FALSE,
   verbose = FALSE
 )
@@ -19,6 +20,8 @@ get_mob_idx(
 
 \item{city}{(optional) A vector containing specific cities to filter for (e.g "milan").
 This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.}
+
+\item{cache}{(bool) cache results to filesystem}
 
 \item{weekly}{Get weekly data (default is daily)}
 

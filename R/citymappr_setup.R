@@ -46,6 +46,7 @@ citymappr_setup <- function(config_file = "~/.citymappr",
 
   # Print token if verbose
   if (echo) {
-    print(toJSON(as.list(Sys.getenv(c("CITYMAPPER_API_TOKEN")))))
+    print(Sys.getenv("CITYMAPPER_API_TOKEN"))
   }
+
 }

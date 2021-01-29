@@ -24,6 +24,7 @@ devtools::install_github("andodet/citymappR")
 The package provides access to Citymapper's API endpoints:
 
 - `citymapper_setup`: initialise Citymapper's api token. Check `?citymapper_setup` for different ways of passing the api token.
+By default the token will be searched in the current working directory.
 - `check_coverage`: check if aone or moregeographical point sfallswithin Citymapper's covered areas.
 - `cet_travel_time`: comptues travel time between two points using public transport.
 - `get_mob_idx`: Download [city mobility index](https://citymapper.com/cmi/) data as dataframe.

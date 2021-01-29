@@ -4,10 +4,11 @@
 \alias{citymappr_setup}
 \title{Setup env variables for Citymapper's API access}
 \usage{
-citymappr_setup(config_file = "~/.citymappr", api_token = NULL, echo = FALSE)
+citymappr_setup(config_file = ".citymappr", api_token = NULL, echo = FALSE)
 }
 \arguments{
-\item{config_file}{a configuration file in DCF format. See \link{read.dcf}.}
+\item{config_file}{a configuration file in DCF format. See \link{read.dcf}. By default the key
+will be searched in the current working directory.}
 
 \item{api_token}{Citymapper's api key (chr).}
 
@@ -18,7 +19,7 @@ An env variable
 }
 \description{
 Initialize the API key \code{citymappR} will send in every request for authentication.
-If a file is found at the locatioin specified in \code{config_file}, the values will be used.
+If a file is found at the location specified in \code{config_file}, the values will be used.
 }
 \details{
 \preformatted{

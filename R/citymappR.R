@@ -7,6 +7,7 @@
 #'   As of \code{0.1.1} the package allows to download \href{https://citymapper.com/cmi}{
 #'   Citymapper's city mobility index}
 #'
+#' @keywords internal
 #' @docType package
 #' @name citymappR
 #'

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>/404.html</loc>
+  </url>
+  <url>
+    <loc>/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>/authors.html</loc>
+  </url>
+  <url>
+    <loc>/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_coverage.html</loc>
+  </url>
+  <url>
+    <loc>/reference/citymappR.html</loc>
+  </url>
+  <url>
+    <loc>/reference/citymappr_setup.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_mob_idx.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_travel_time.html</loc>
+  </url>
+  <url>
+    <loc>/reference/index.html</loc>
+  </url>
+</urlset>

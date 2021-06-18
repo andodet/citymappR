@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,7 +41,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -50,7 +52,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/andodet/citymappR">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -68,24 +70,24 @@
   <div class="contents col-md-9">
 <div id="citymappr-️" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#citymappr-%EF%B8%8F" class="anchor"></a>citymappR 🚎️</h1></div>
+<a href="#citymappr-%EF%B8%8F" class="anchor" aria-hidden="true"></a>citymappR 🚎️</h1></div>
 <p><img src="reference/figures/citymappR_logo.png"></p>
 <!-- badges: start -->
-<p><a href="https://github.com/andodet/citymappR/actions"><img src="https://github.com/andodet/citymappR/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <!-- badges: end --></p>
-<p>A simple <a href="https://citymapper.com/api">Citymapper’s API</a> wrapper written in R</p>
+
+<p>A simple <a href="https://citymapper.com/api" class="external-link">Citymapper’s API</a> wrapper written in R</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
 <p>You can install the package running the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"andodet/citymappR"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"andodet/citymappR"</span><span class="op">)</span>
 
 <span class="co"># Or using devtools</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"andodet/citymappR"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<a href="#usage" class="anchor" aria-hidden="true"></a>Usage</h2>
 <p>The package provides access to Citymapper’s API endpoints:</p>
 <ul>
 <li>
@@ -95,11 +97,11 @@
 <li>
 <code>cet_travel_time</code>: comptues travel time between two points using public transport.</li>
 <li>
-<code>get_mob_idx</code>: Download <a href="https://citymapper.com/cmi/">city mobility index</a> data as dataframe.</li>
+<code>get_mob_idx</code>: Download <a href="https://citymapper.com/cmi/" class="external-link">city mobility index</a> data as dataframe.</li>
 </ul>
 <p>Below few simple examples on how tho use these functions:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">citymappR</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">citymappR</span><span class="op">)</span>
 
 <span class="co"># Set Citymapper's api key</span>
 <span class="fu"><a href="reference/citymappr_setup.html">citymappr_setup</a></span><span class="op">(</span><span class="op">)</span>
@@ -112,7 +114,7 @@
 <span class="co"># [1] TRUE</span>
 
 <span class="co"># Accepts vectors or lists with multiple points</span>
-<span class="va">points_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">start_point</span>, <span class="va">end_point</span><span class="op">)</span><span class="op">)</span>
+<span class="va">points_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">start_point</span>, <span class="va">end_point</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="reference/check_coverage.html">check_coverage</a></span><span class="op">(</span><span class="va">points_vec</span><span class="op">)</span>
 <span class="co"># [1] TRUE TRUE</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -122,9 +124,9 @@
 
 <span class="va">travel_time</span>  <span class="co"># [1] 21</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span>
 
-<span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rome"</span>, <span class="st">"milan"</span>, <span class="st">"london"</span><span class="op">)</span>
+<span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rome"</span>, <span class="st">"milan"</span>, <span class="st">"london"</span><span class="op">)</span>
 
 <span class="co"># Get a sense of how poeple is starting to move again</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_mob_idx.html">get_mob_idx</a></span><span class="op">(</span>city <span class="op">=</span> <span class="va">cities</span>, start_date <span class="op">=</span> <span class="st">"2020-05-01"</span><span class="op">)</span>
@@ -136,7 +138,7 @@
 </div>
 <div id="quotas" class="section level2">
 <h2 class="hasAnchor">
-<a href="#quotas" class="anchor"></a>Quotas</h2>
+<a href="#quotas" class="anchor" aria-hidden="true"></a>Quotas</h2>
 <p>Citymapper’s quotas and usage limits apply to <code>citymappeR</code>. At the time of writing, they go as the following for a standard account:</p>
 <ul>
 <li>
@@ -150,7 +152,7 @@
 </div>
 <div id="disclaimer" class="section level2">
 <h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
+<a href="#disclaimer" class="anchor" aria-hidden="true"></a>Disclaimer</h2>
 <p>This package has been developed to familiarise with <code>httr</code> package, <code>jsonlite</code> and unit testing, PRs or issues are more than appreciated.</p>
 </div>
 </div>
@@ -158,7 +160,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/andodet/citymappR/">https://​github.com/​andodet/​citymappR/​</a>
 </li>
@@ -166,18 +168,28 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
 <a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Andrea dodet <br><small class="roles"> Maintainer </small>  </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/andodet/citymappR/actions" class="external-link"><img src="https://github.com/andodet/citymappR/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 
@@ -186,11 +198,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Andrea dodet.</p>
+  <p></p>
+<p>Developed by Andrea dodet.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -198,6 +212,8 @@
 
   
 
+
+  
 
   </body>
 </html>

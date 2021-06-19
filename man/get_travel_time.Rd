@@ -7,8 +7,8 @@
 get_travel_time(
   start_coord,
   end_coord,
-  time = "",
-  time_type = "",
+  time = get_iso8601_ts(),
+  time_type = "arrival",
   api_token = Sys.getenv("CITYMAPPER_API_TOKEN")
 )
 }

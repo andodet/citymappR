@@ -18,7 +18,7 @@ get_mob_idx(
 
 \item{end_date}{Last observed day with format YYYY-MM-DD}
 
-\item{city}{(optional) A vector containing specific cities to filter for (e.g "milan").
+\item{city}{(optional) A vector containing specific cities to filter for (e.g "milan", lower-case).
 This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.}
 
 \item{cache}{(bool) cache results to filesystem}

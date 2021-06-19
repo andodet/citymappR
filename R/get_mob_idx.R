@@ -8,7 +8,7 @@
 #'
 #' @param start_date First observed day with format YYYY-MM-DD
 #' @param end_date Last observed day with format YYYY-MM-DD
-#' @param city (optional) A vector containing specific cities to filter for (e.g "milan").
+#' @param city (optional) A vector containing specific cities to filter for (e.g "milan", lower-case).
 #'   This obviously follow Citymapper's \href{https://citymapper.com/cities?lang=en}{coverage}.
 #' @param cache (bool) cache results to filesystem
 #' @param weekly Get weekly data (default is daily)

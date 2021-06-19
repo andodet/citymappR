@@ -72,4 +72,9 @@ test_that("mobility index returns a non-empty data frame", {
 
 })
 
+test_that("Distance between two points is > 0", {
+  res <- get_travel_time(coords[1], coords[2])
+  expect_true(res > 0)
+})
+
 

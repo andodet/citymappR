@@ -53,7 +53,7 @@ get_travel_time <- function(start_coord,
 
   return(
     fromJSON(
-      content(resp, "text"))$travel_time_minutes
+      content(resp, "text", encoding = "UTF-8"))$travel_time_minutes
   )
 
 }

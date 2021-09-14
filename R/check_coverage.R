@@ -5,7 +5,7 @@
 #'  It is good practice to refresh this values regularly as covered areas might change over time.
 #'
 #' @inheritParams citymappr_setup
-#' @param points List or vector containing geographical coordinates of the start point
+#' @param points List or vector containing geographical coordinates of the point to be checked.
 #'   in WGS84 \code{'<latitude>,<longitude>'} format.
 #' @return A vector containing boolean responses for each point in \code{points}
 #'
@@ -31,54 +31,26 @@ check_coverage <- function(points,
          Check ?citymappr_setup on how to pass the api token")
   }
 
-  # Handle request when multiple input points are provided
-  if (length(points) > 1) {
+  points_payload <- data.frame(coord = points)
 
-    # Handle lists
-    if(is.list(points)) {
-      points <- unlist(points)
-    }
+  points_payload$coord <- lapply(
+    strsplit(as.character(points), ","),
+    as.numeric
+  )
 
-    points_payload <- data.frame(coord = points)
+  points_payload <- toJSON(list(`points` = points_payload))
 
-    points_payload$coord <- lapply(
-      strsplit(as.character(points), ","),
-      as.numeric
-    )
+  resp <- RETRY("POST", url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
+                                     api_token),
+                add_headers(c("User-Agent" = "https://github.com/andodet/citymappR/",
+                              "Content-Type" = "appliation/json; charset=UTF-8")),
+                body = points_payload
+                )
 
-    points_payload <- toJSON(list(`points` = points_payload))
+  stop_for_status(resp)
 
-    resp <- RETRY("POST", url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
-                                       api_token),
-                  add_headers("https://github.com/andodet/citymappR/"),
-                  body = points_payload,
-                  encode="json"
-                  )
-
-    stop_for_status(resp)
-
-    resp <- fromJSON(content(resp, "text"))[["points"]][["covered"]]
-
-    return(resp)
-
-  } else {
-
-    # Handle request for single input
-    resp <- RETRY("GET",
-                  url="https://developer.citymapper.com/api/1/singlepointcoverage/",
-                  add_headers("https://github.com/andodet/citymappR/"),
-                  query = list(key = api_token,
-                               coord = points)
-            )
-
-    stop_for_status(resp)
-
-    return(
-      fromJSON(
-        content(resp, "text"))[["points"]]$covered
-    )
-
-  }
+  res <- fromJSON(content(resp, "text", encoding = "UTF-8"))[["points"]][["covered"]]
+  return(res)
 
 }
 

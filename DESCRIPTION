@@ -18,5 +18,6 @@ Imports:
   rlang,
   memoise
 Suggests: 
-    testthat,
+    vcr (>= 0.6.0),
+    testthat
 BugReports: https://github.com/andodet/citymappR/issues

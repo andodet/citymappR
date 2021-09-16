@@ -31,54 +31,36 @@ check_coverage <- function(points,
          Check ?citymappr_setup on how to pass the api token")
   }
 
-  # Handle request when multiple input points are provided
-  if (length(points) > 1) {
-
-    # Handle lists
-    if(is.list(points)) {
-      points <- unlist(points)
+  # Check if junk input was provided
+  # TODO: there must be a cleaner way to do input validation
+  suppressWarnings(
+    if(is.na(
+      all(as.numeric(unlist(strsplit(points, ","))))
+    )){
+      stop("Malformed data was provided")
     }
+  )
 
-    points_payload <- data.frame(coord = points)
+  points_payload <- data.frame(coord = points)
 
-    points_payload$coord <- lapply(
-      strsplit(as.character(points), ","),
-      as.numeric
-    )
+  points_payload$coord <- lapply(
+    strsplit(as.character(points), ","),
+    as.numeric
+  )
 
-    points_payload <- toJSON(list(`points` = points_payload))
+  points_payload <- toJSON(list(`points` = points_payload))
 
-    resp <- RETRY("POST", url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
-                                       api_token),
-                  add_headers("https://github.com/andodet/citymappR/"),
-                  body = points_payload,
-                  encode="json"
-                  )
+  resp <- RETRY("POST", url = paste0("https://developer.citymapper.com/api/1/coverage/?key=",
+                                     api_token),
+                add_headers(c("User-Agent" = "https://github.com/andodet/citymappR/",
+                              "Content-Type" = "appliation/json")),
+                body = points_payload
+                )
 
-    stop_for_status(resp)
+  stop_for_status(resp)
 
-    resp <- fromJSON(content(resp, "text"))[["points"]][["covered"]]
-
-    return(resp)
-
-  } else {
-
-    # Handle request for single input
-    resp <- RETRY("GET",
-                  url="https://developer.citymapper.com/api/1/singlepointcoverage/",
-                  add_headers("https://github.com/andodet/citymappR/"),
-                  query = list(key = api_token,
-                               coord = points)
-            )
-
-    stop_for_status(resp)
-
-    return(
-      fromJSON(
-        content(resp, "text"))[["points"]]$covered
-    )
-
-  }
+  res <- fromJSON(content(resp, "text", encoding = "UTF-8"))[["points"]][["covered"]]
+  return(res)
 
 }
 

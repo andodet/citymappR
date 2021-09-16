@@ -39,7 +39,7 @@ get_travel_time <- function(start_coord,
 
   resp <-RETRY("GET",
                url = "https://developer.citymapper.com/api/1/traveltime/",
-               add_headers("https://github.com/andodet/citymappR/"),
+               add_headers("User-Agent" = "https://github.com/andodet/citymappR/"),
                query = list(
                  key = api_token,
                  startcoord = start_coord,
@@ -53,7 +53,7 @@ get_travel_time <- function(start_coord,
 
   return(
     fromJSON(
-      content(resp, "text"))$travel_time_minutes
+      content(resp, "text", encoding = "UTF-8"))$travel_time_minutes
   )
 
 }

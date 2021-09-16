@@ -33,33 +33,17 @@
 get_mob_idx <- function(start_date = "2020-01-01",
                         end_date = Sys.Date(),
                         city = NA,
-                        cache = TRUE,
                         weekly = FALSE,
-                        verbose = FALSE) {
+                        cache = TRUE,
+                        verbose=FALSE) {
 
-  # Add progress bar if verbose
-  if (verbose) {
-    prog_bar <- httr::progress(type = "down", con = stdout())
-  } else {
-    prog_bar <- NULL
-  }
 
-  download_data <- function() {
-    httr::RETRY(
-      "GET",
-      url = 'https://citymapper.com/api/gobot_tab/data',
-      add_headers("https://github.com/andodet/citymappR/"),
-      prog_bar
-    ) %>%
-      content()
-  }
-
-  # Cache results if not otherwise specified
+  # Check if data exists in cache first
   if (cache) {
-    data <- cache_call(FUN = download_data)
+    data <- cache_call(FUN = download_mob_idx_data)
     res <- data()
   } else {
-    res <- download_data()
+    res <- download_mob_idx_data(verbose = verbose)
   }
 
   # Parse locations
@@ -94,6 +78,34 @@ get_mob_idx <- function(start_date = "2020-01-01",
 }
 
 
+#' Download mobility index data
+#'
+#' @param verbose (bool) Show a progress bar
+#'
+#' @return Content of the response object
+#'
+#' @noRd
+download_mob_idx_data <- function(verbose = FALSE) {
+
+  # Add progress bar if verbose
+  if (verbose) {
+    prog_bar <- httr::progress(type = "down", con = stdout())
+  } else {
+    prog_bar <- NULL
+  }
+
+  res <- httr::RETRY(
+    "GET",
+    url = 'https://citymapper.com/api/gobot_tab/data',
+    add_headers("https://github.com/andodet/citymappR/"),
+    prog_bar
+  ) %>%
+    content()
+
+  return(res)
+}
+
+
 #' Helper to parse Citymapper's response into a dataframe
 #'
 #' @param res a response as returned from Citymapper's api
@@ -105,7 +117,9 @@ get_mob_idx <- function(start_date = "2020-01-01",
 parse_response <- function(res) {
   parsed <- res %>%
     data.table::rbindlist(fill = TRUE) %>%
-    as.data.frame()
+    as.data.frame() %>%
+    # Suppress NA coercion message
+    suppressWarnings()
 
   return(parsed)
 }

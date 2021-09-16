@@ -1,0 +1,79 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://developer.citymapper.com/api/1/coverage/?key=blabla
+    body:
+      encoding: ''
+      string: '{"points":[{"coord":[41.899,12.4772]},{"coord":[41.8891,12.4705]}]}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: https://github.com/andodet/citymappR/
+      Content-Type: appliation/json
+  response:
+    status:
+      status_code: 403
+      category: Client error
+      reason: Forbidden
+      message: 'Client error: (403) Forbidden'
+    headers:
+      date: Tue, 14 Sep 2021 19:52:22 GMT
+      content-type: application/json; charset=utf8
+      server: openresty/1.15.8.3
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"error_message": "Invalid API key"}'
+  recorded_at: 2021-09-14 19:52:29 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: post
+    uri: https://developer.citymapper.com/api/1/coverage/?key=blabla
+    body:
+      encoding: ''
+      string: '{"points":[{"coord":[41.899,12.4772]},{"coord":[41.8891,12.4705]}]}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: https://github.com/andodet/citymappR/
+      Content-Type: appliation/json
+  response:
+    status:
+      status_code: 403
+      category: Client error
+      reason: Forbidden
+      message: 'Client error: (403) Forbidden'
+    headers:
+      date: Tue, 14 Sep 2021 19:52:24 GMT
+      content-type: application/json; charset=utf8
+      server: openresty/1.15.8.3
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"error_message": "Invalid API key"}'
+  recorded_at: 2021-09-14 19:52:29 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: post
+    uri: https://developer.citymapper.com/api/1/coverage/?key=blabla
+    body:
+      encoding: ''
+      string: '{"points":[{"coord":[41.899,12.4772]},{"coord":[41.8891,12.4705]}]}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: https://github.com/andodet/citymappR/
+      Content-Type: appliation/json
+  response:
+    status:
+      status_code: 403
+      category: Client error
+      reason: Forbidden
+      message: 'Client error: (403) Forbidden'
+    headers:
+      date: Tue, 14 Sep 2021 19:52:29 GMT
+      content-type: application/json; charset=utf8
+      server: openresty/1.15.8.3
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"error_message": "Invalid API key"}'
+  recorded_at: 2021-09-14 19:52:29 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

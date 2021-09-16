@@ -1,0 +1,31 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://developer.citymapper.com/api/1/coverage/?key=api_key
+    body:
+      encoding: ''
+      string: '{"points":[{"coord":[41.899,12.4772]}]}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: https://github.com/andodet/citymappR/
+      Content-Type: appliation/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 14 Sep 2021 19:46:09 GMT
+      content-type: application/json
+      content-length: '54'
+      server: openresty/1.15.8.3
+      via: kong/2.4.1
+      x-kong-proxy-latency: '0'
+      x-kong-upstream-latency: '6'
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"points":[{"covered":true,"coord":[41.899,12.4772]}]}'
+  recorded_at: 2021-09-14 19:46:09 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

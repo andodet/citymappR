@@ -1,0 +1,31 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://developer.citymapper.com/api/1/traveltime/?key=api_key&startcoord=41.899009%2C12.477243&endcoord=41.889083%2C12.470514
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: ''
+      User-Agent: https://github.com/andodet/citymappR/
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Sat, 25 Sep 2021 16:22:44 GMT
+      content-type: application/json
+      content-length: '26'
+      server: openresty/1.15.8.3
+      via: kong/2.4.1
+      x-kong-proxy-latency: '1'
+      x-kong-upstream-latency: '65'
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"travel_time_minutes":22}'
+  recorded_at: 2021-09-25 16:22:44 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

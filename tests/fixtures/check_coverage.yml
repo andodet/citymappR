@@ -16,16 +16,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 14 Sep 2021 19:46:09 GMT
+      date: Sat, 25 Sep 2021 15:21:51 GMT
       content-type: application/json
       content-length: '54'
       server: openresty/1.15.8.3
       via: kong/2.4.1
-      x-kong-proxy-latency: '0'
-      x-kong-upstream-latency: '6'
+      x-kong-proxy-latency: '1'
+      x-kong-upstream-latency: '5'
     body:
       encoding: UTF-8
       file: no
       string: '{"points":[{"covered":true,"coord":[41.899,12.4772]}]}'
-  recorded_at: 2021-09-14 19:46:09 GMT
+  recorded_at: 2021-09-25 15:21:51 GMT
   recorded_with: vcr/1.0.2, webmockr/0.8.0

@@ -1,11 +1,6 @@
 library(testthat)
 
 
-# Some valid coordinates
-coords <- c("41.899009,12.477243",
-            "41.889083,12.470514")
-
-
 test_that("check_coverage returns a `bool`", {
   vcr::use_cassette("check_coverage", {
     res <- check_coverage(coords[1])

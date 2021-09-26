@@ -6,8 +6,8 @@
 #'
 #' @param start_coord Geographical coordinates of the start point in WGS84 '<latitude>,<longitude>' format.
 #' @param end_coord Geographical coordinates of the arrival point in WGS84 '<latitude>,<longitude>' format.
-#' @param time A date & time in ISO-8601 format (e.g \code{2014-11-06T19:00:02-0500}).
-#'   If omitted travel time will be computed for travel at the time of the request.
+#' @param time A date & time in ISO-8601 format (e. %>% g \code{2014-11-06T19:00:02-0500}).
+#'   If omitted, it will be computed by the endpoint.
 #' @param time_type Required if `time` is provided. At the moment the only defined type
 #'   is `arrival`, it computes the travel time for arriving at `end_coord` at the given time.
 #' @inheritParams citymappr_setup
@@ -27,11 +27,11 @@
 #' @export
 get_travel_time <- function(start_coord,
                             end_coord,
-                            time=get_iso8601_ts(),
-                            time_type="arrival",
+                            time=NULL,
+                            time_type=NULL,
                             api_token = Sys.getenv("CITYMAPPER_API_TOKEN")) {
 
- # Check if api token has been provided
+  # Check if api token has been provided
   if (api_token == "") {
     stop("Citymapper API token not found, please provide one.
          Check ?citymappr_setup on how to pass the api token")

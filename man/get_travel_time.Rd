@@ -7,8 +7,8 @@
 get_travel_time(
   start_coord,
   end_coord,
-  time = get_iso8601_ts(),
-  time_type = "arrival",
+  time = NULL,
+  time_type = NULL,
   api_token = Sys.getenv("CITYMAPPER_API_TOKEN")
 )
 }
@@ -17,8 +17,8 @@ get_travel_time(
 
 \item{end_coord}{Geographical coordinates of the arrival point in WGS84 '<latitude>,<longitude>' format.}
 
-\item{time}{A date & time in ISO-8601 format (e.g \code{2014-11-06T19:00:02-0500}).
-If omitted travel time will be computed for travel at the time of the request.}
+\item{time}{A date & time in ISO-8601 format (e. %>% g \code{2014-11-06T19:00:02-0500}).
+If omitted, it will be computed by the endpoint.}
 
 \item{time_type}{Required if `time` is provided. At the moment the only defined type
 is `arrival`, it computes the travel time for arriving at `end_coord` at the given time.}

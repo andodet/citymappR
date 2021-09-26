@@ -1,7 +1,8 @@
 library("vcr") # *Required* as vcr is set up on loading
 
-if (!nzchar(Sys.getenv("CITYMAPPER_API_KEY"))) {
-  Sys.setenv("CITYMAPPER_API_KEY" = "foobar")
+
+if (!nzchar(Sys.getenv("CITYMAPPER_API_TOKEN"))) {
+  Sys.setenv("CITYMAPPER_API_TOKEN" = "foobar")
 }
 
 invisible(vcr::vcr_configure(

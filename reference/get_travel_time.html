@@ -82,7 +82,7 @@ If time and time_type are not specified, time of travel will be assumed
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">citymappR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.1</span>
       </span>
     </div>
 
@@ -132,8 +132,8 @@ If <code>time</code> and <code>time_type</code> are not specified, time of trave
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>get_travel_time</span><span class='op'>(</span>
   <span class='va'>start_coord</span>,
   <span class='va'>end_coord</span>,
-  time <span class='op'>=</span> <span class='fu'>get_iso8601_ts</span><span class='op'>(</span><span class='op'>)</span>,
-  time_type <span class='op'>=</span> <span class='st'>"arrival"</span>,
+  time <span class='op'>=</span> <span class='cn'>NULL</span>,
+  time_type <span class='op'>=</span> <span class='cn'>NULL</span>,
   api_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"CITYMAPPER_API_TOKEN"</span><span class='op'>)</span>
 <span class='op'>)</span></code></pre></div>
 
@@ -150,8 +150,8 @@ If <code>time</code> and <code>time_type</code> are not specified, time of trave
     </tr>
     <tr>
       <th>time</th>
-      <td><p>A date &amp; time in ISO-8601 format (e.g <code>2014-11-06T19:00:02-0500</code>).
-If omitted travel time will be computed for travel at the time of the request.</p></td>
+      <td><p>A date &amp; time in ISO-8601 format (e. <!-- %&gt;% g \code{2014-11-06T19:00:02-0500}). -->
+If omitted, it will be computed by the endpoint.</p></td>
     </tr>
     <tr>
       <th>time_type</th>
